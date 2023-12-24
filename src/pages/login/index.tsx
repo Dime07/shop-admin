@@ -68,7 +68,11 @@ const Login = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <div className="flex">
+              <Button type="submit" className="bg-viridian-800 ml-auto">
+                Submit
+              </Button>
+            </div>
           </form>
         </Form>
       </div>

@@ -15,7 +15,7 @@ const ROUTES = [
 const Sidebar = () => {
   const location = useLocation();
   return (
-    <div className="min-h-screen w-60 shadow-md p-4 bg-viridian-50/50">
+    <div className="min-h-screen w-60 shadow-md p-4 ">
       <ul className="flex flex-col gap-4">
         {ROUTES.map((route) => (
           <li className="flex">
