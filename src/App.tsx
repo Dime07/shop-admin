@@ -4,9 +4,9 @@ import Login from "./pages/login";
 import { useAuth } from "./context/authContext";
 import Dashboard from "./pages/dashboard";
 
-import Product from "./pages/product";
 import ProtectedRoutes from "./routes/protectedRoutes";
 import AddProductPage from "./pages/product/add";
+import Product from "./pages/product";
 
 function App() {
   const { isAuthenticated } = useAuth();

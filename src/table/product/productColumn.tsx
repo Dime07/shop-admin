@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 
-export type Product = {
+export type ProductType = {
   id: string;
   name: string;
   brand: string;
@@ -8,7 +8,7 @@ export type Product = {
   image: string;
 };
 
-export const productColumns: ColumnDef<Product>[] = [
+export const productColumns: ColumnDef<ProductType>[] = [
   {
     accessorKey: "name",
     header: "Name",

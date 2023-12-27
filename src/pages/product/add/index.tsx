@@ -9,6 +9,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useAddProduct from "@/firebase/mutations/useAddProduct";
+import useUploadAssets from "@/firebase/mutations/useUploadAssets";
 import MainLayout from "@/layouts/mainLayout";
 import { ProductFormSchemeType, productFormScheme } from "@/schemes/product";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,6 +40,8 @@ const frameworks = [
 ];
 
 const AddProductForm = () => {
+  const { mutateAsync: addProduct } = useAddProduct();
+  const { mutateAsync: uploadAssets } = useUploadAssets();
   const form = useForm<ProductFormSchemeType>({
     resolver: zodResolver(productFormScheme),
     defaultValues: {
@@ -47,8 +51,17 @@ const AddProductForm = () => {
     },
   });
 
-  const handleAddProduct = (value: ProductFormSchemeType) => {
-    console.log(value);
+  const handleAddProduct = async (value: ProductFormSchemeType) => {
+    try {
+      const image = await uploadAssets(value.image);
+      value.image = image;
+
+      await addProduct({
+        ...value,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -101,6 +114,7 @@ const AddProductForm = () => {
               </FormItem>
             )}
           />
+          {/* //TODO DO MORE RESEARCH HOW TO UPLOAD FILE */}
           <FormField
             control={form.control}
             name="image"
