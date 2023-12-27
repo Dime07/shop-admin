@@ -24,8 +24,9 @@ const Sidebar = () => {
               className={cn(
                 "p-2 w-full font-medium rounded-md text-viridian-950 cursor-pointer transition-all duration-500 capitalize",
                 {
-                  "bg-viridian-400 text-white":
-                    location.pathname === route.pathname,
+                  "bg-viridian-400 text-white": location.pathname.includes(
+                    route.name
+                  ),
                 }
               )}
             >

@@ -6,18 +6,27 @@ import Dashboard from "./pages/dashboard";
 
 import Product from "./pages/product";
 import ProtectedRoutes from "./routes/protectedRoutes";
+import AddProductPage from "./pages/product/add";
 
 function App() {
   const { isAuthenticated } = useAuth();
   return (
     <Routes>
       <Route path="/" element={isAuthenticated ? <Dashboard /> : <Login />} />
-
+      {/* PROTECTED ROUTES */}
       <Route
         path="/product"
         element={
           <ProtectedRoutes>
             <Product />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/product/add"
+        element={
+          <ProtectedRoutes>
+            <AddProductPage />
           </ProtectedRoutes>
         }
       />
